@@ -12,3 +12,8 @@ jobs:
       uses: NuGet/setup-nuget@v1.0.2
     - name: NuGet Restore Packages
       run: nuget restore Src/DSInternals.sln
+    # - name: Setup MSBuild.exe
+    #  uses: warrenbuckley/Setup-MSBuild@v1
+    - name: MSBuild
+      working-directory: Src
+      run: msbuild DSInternals.sln
