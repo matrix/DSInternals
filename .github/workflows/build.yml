@@ -30,6 +30,10 @@ jobs:
       working-directory: Scripts
       run: ./Pack-PSModule.ps1
       shell: powershell
+    - name: Run Smoke Tests
+      working-directory: Scripts
+      run: ./Invoke-SmokeTests.ps1
+      shell: powershell
     - name: Upload GitHub Package
       uses: actions/upload-artifact@v1.0.0
       with:
