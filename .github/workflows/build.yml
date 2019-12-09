@@ -12,14 +12,14 @@ jobs:
       uses: NuGet/setup-nuget@v1.0.2
     - name: NuGet Restore Packages
       run: nuget restore Src/DSInternals.sln
-    - name: Setup MSBuild.exe
+    - name: Setup MSBuild
       uses: warrenbuckley/Setup-MSBuild@v1
-    - name: Build (Debug x86)
-      working-directory: Src
-      run: msbuild DSInternals.sln /t:Build /p:Configuration=Debug /p:Platform=x86
-    - name: Build (Debug x64)
-      working-directory: Src
-      run: msbuild DSInternals.sln /t:Build /p:Configuration=Debug /p:Platform=x64
+#     - name: Build (Debug x86)
+#       working-directory: Src
+#       run: msbuild DSInternals.sln /t:Build /p:Configuration=Debug /p:Platform=x86
+#     - name: Build (Debug x64)
+#       working-directory: Src
+#       run: msbuild DSInternals.sln /t:Build /p:Configuration=Debug /p:Platform=x64
     - name: Build (Release x86)
       working-directory: Src
       run: msbuild DSInternals.sln /t:Build /p:Configuration=Release /p:Platform=x86
@@ -28,7 +28,7 @@ jobs:
       run: msbuild DSInternals.sln /t:Build /p:Configuration=Release /p:Platform=x64
     - name: ZIP Pack (PowerShell Module)
       working-directory: Scripts
-      run: Pack-PSModule.ps1
+      run: ./Pack-PSModule.ps1
       shell: powershell
     - name: Upload GitHub Package
       uses: actions/upload-artifact@v1.0.0
